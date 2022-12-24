@@ -1,1 +1,1 @@
-build* linguist-vendored
+Makefile linguist-language=cpp
