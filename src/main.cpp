@@ -6,23 +6,16 @@
 
 // Messing with fstream
 int main(int args, char** argv){
+	
 
 	int v_args = args;
 	char** c_argv = argv;
 	
+	
 	std::string db_name = argv[1];
-	std::ifstream db_read(db_name + (std::string)".txt");
+
 	std::ofstream b_database;
-	if(db_read.fail()){
-		
-		b_database.open(db_name + (std::string)".txt");
-		//std::ofstream b_database(db_name + (std::string)".txt");
-
-
-
-
-	}
-
+	b_database.open(db_name + (std::string)".txt");
 	std::string options;
 
 	std::cout << "Some things you can do:" << std::endl;
@@ -42,34 +35,20 @@ int main(int args, char** argv){
 	std::cout << std::endl << std::endl;
 
 	std::cin >> options;
-	int amnt {0};
+	int amnt = 0;
 	for(auto a:options){
 		amnt++;
 	}
 
-	if(amnt < 3 && options[0] == '-'){
-		if(options[1] == 'C'){
-			std::cout << "Usage: " << "-C [name] [age] [id]" << std::endl;
-		}
-	} else if(amnt > 3 && options[0] == '-'){
-		if(options[1] == 'C'){
-			std::cout << options.substr(3, amnt) << std::endl;
-		}
+
+	if(options == "-C"){
+		std::string name;
+		std::cout << "Choose a name: " << std::endl;
+		std::cin >> name;
+		b_database << "Name:" << name << ";";
 	}
 
-				
-
-	
 	b_database.close();
-	db_read.close();
-
-	//if((std::string)argv[1] == (std::string)"hello"){
-	
-		//std::cout << "World!" << std::endl;
-	
-	//}
-
-	
 
 	return 0;
 }
